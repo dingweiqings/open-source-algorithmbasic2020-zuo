@@ -25,20 +25,23 @@ public class Code01_MergeSort {
 	}
 
 	public static void merge(int[] arr, int L, int M, int R) {
+		//申请一个辅助数组
 		int[] help = new int[R - L + 1];
 		int i = 0;
 		int p1 = L;
 		int p2 = M + 1;
+		// 左右半边各搞一个指针,谁小拷贝谁
 		while (p1 <= M && p2 <= R) {
 			help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
 		}
-		// 要么p1越界了，要么p2越界了
+		// 要么p1越界了，要么p2越界了。再把剩下的
 		while (p1 <= M) {
 			help[i++] = arr[p1++];
 		}
 		while (p2 <= R) {
 			help[i++] = arr[p2++];
 		}
+		//最后拷贝回原数组
 		for (i = 0; i < help.length; i++) {
 			arr[L + i] = help[i];
 		}

@@ -95,6 +95,7 @@ public class Code02_SkipListMap {
 			} else { // find == null   8   7   9
 				size++;
 				int newNodeLevel = 0;
+				//如果达到了概率为1/2的另外一边
 				while (Math.random() < PROBABILITY) {
 					newNodeLevel++;
 				}

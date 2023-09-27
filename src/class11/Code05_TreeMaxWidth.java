@@ -63,6 +63,7 @@ public class Code05_TreeMaxWidth {
 		int curLevelNodes = 0; // 当前层的节点数
 		while (!queue.isEmpty()) {
 			Node cur = queue.poll();
+			//每次都记录nextEnd
 			if (cur.left != null) {
 				queue.add(cur.left);
 				nextEnd = cur.left;
@@ -73,6 +74,7 @@ public class Code05_TreeMaxWidth {
 			}
 			curLevelNodes++;
 			if (cur == curEnd) {
+				//也可以在这里来处理nextEnd?不能,下一层最右节点不一定是上一层节点的子节点
 				max = Math.max(max, curLevelNodes);
 				curLevelNodes = 0;
 				curEnd = nextEnd;

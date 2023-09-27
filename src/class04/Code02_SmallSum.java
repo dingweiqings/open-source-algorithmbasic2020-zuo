@@ -1,5 +1,8 @@
 package class04;
 
+/**
+ * 小和问题 https://leetcode.cn/problems/count-of-smaller-numbers-after-self/
+ */
 public class Code02_SmallSum {
 
 	public static int smallSum(int[] arr) {
@@ -34,7 +37,9 @@ public class Code02_SmallSum {
 		int p1 = L;
 		int p2 = m + 1;
 		int res = 0;
+		//加工在流程中自己需要的数据
 		while (p1 <= m && p2 <= r) {
+			//右侧有几个数比自己当前左侧的大,则算小和.所以这里有个乘
 			res += arr[p1] < arr[p2] ? (r - p2 + 1) * arr[p1] : 0;
 			help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
 		}

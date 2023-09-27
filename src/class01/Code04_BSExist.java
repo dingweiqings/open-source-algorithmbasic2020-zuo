@@ -11,7 +11,8 @@ public class Code04_BSExist {
 		int L = 0;
 		int R = sortedArr.length - 1;
 		int mid = 0;
-		// L..R
+		// L..R  这段流程是递归去查找，不过用下标变换的方式去实现的.对L和R重新赋值
+		//为什么最后会剩一个数?因为如果至少还有2个数，则还可以进行一次二分。可能是3个数直接到1个数，也可能是2个数到1个数.[L,R]中包含的元素个数总是不断减小的
 		while (L < R) { // L..R 至少两个数的时候
 			mid = L + ((R - L) >> 1);
 			if (sortedArr[mid] == num) {

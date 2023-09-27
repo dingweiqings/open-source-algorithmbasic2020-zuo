@@ -24,6 +24,11 @@ public class Code01_ReverseList {
 		}
 	}
 
+	/**
+	 * 用3个变量,pre,cur,next,这样就可以在修改链表之前把next记录下来，并一直前进到链表尾部
+	 * @param head
+	 * @return
+	 */
 	//  head
 	//   a    ->   b    ->  c  ->  null
 	//   c    ->   b    ->  a  ->  null
@@ -31,21 +36,32 @@ public class Code01_ReverseList {
 		Node pre = null;
 		Node next = null;
 		while (head != null) {
+			//保留next指针
 			next = head.next;
+			//修改后继指针
 			head.next = pre;
+			//节点向后移动
 			pre = head;
 			head = next;
 		}
 		return pre;
 	}
 
+	/**
+	 * 双链表也类似，3个变量
+	 * @param head
+	 * @return
+	 */
 	public static DoubleNode reverseDoubleList(DoubleNode head) {
 		DoubleNode pre = null;
 		DoubleNode next = null;
 		while (head != null) {
+			//先记录next节点
 			next = head.next;
+			//修改前驱后继指针
 			head.next = pre;
 			head.last = next;
+			//节点向后移动
 			pre = head;
 			head = next;
 		}

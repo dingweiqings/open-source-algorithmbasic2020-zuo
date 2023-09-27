@@ -11,7 +11,9 @@ public class Code02_EvenTimesOddTimes {
 		System.out.println(eor);
 	}
 
-	// arr中，有两种数，出现奇数次
+	/* arr中，出现奇数次和偶数次.出现奇数词的只有2种，返回这2种树
+
+	 */
 	public static void printOddTimesNum2(int[] arr) {
 		int eor = 0;
 		for (int i = 0; i < arr.length; i++) {

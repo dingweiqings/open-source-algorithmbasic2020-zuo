@@ -24,14 +24,17 @@ public class Code03_ReversePair {
 
 	public static int merge(int[] arr, int L, int m, int r) {
 		int[] help = new int[r - L + 1];
+		//逆序对,从大的方向拷贝
 		int i = help.length - 1;
 		int p1 = m;
 		int p2 = r;
 		int res = 0;
 		while (p1 >= L && p2 > m) {
+			//如果左侧的比右侧的大，则根据有序关系会比[m+1,p2]都要大，这就是构成逆序对的条件
 			res += arr[p1] > arr[p2] ? (p2 - m) : 0;
 			help[i--] = arr[p1] > arr[p2] ? arr[p1--] : arr[p2--];
 		}
+		//归并排序的框架，保持有序性
 		while (p1 >= L) {
 			help[i--] = arr[p1--];
 		}

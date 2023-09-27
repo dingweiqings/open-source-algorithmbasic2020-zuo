@@ -3,7 +3,12 @@ package class01;
 import java.util.Arrays;
 
 public class Code05_BSNearRight {
-
+	/**
+	 * 有序数组中找出<=value最右的位置
+	 * @param arr
+	 * @param value
+	 * @return
+	 */
 	// 在arr上，找满足<=value的最右位置
 	public static int nearestIndex(int[] arr, int value) {
 		int L = 0;

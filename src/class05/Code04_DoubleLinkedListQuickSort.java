@@ -2,7 +2,7 @@ package class05;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-
+//这也是链表的partition
 // 双向链表的随机快速排序
 // 课上没有讲，因为这是群里同学问的问题
 // 作为补充放在这，有需要的同学可以看看

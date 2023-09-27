@@ -12,6 +12,11 @@ public class Code04_RadixSort {
 		radixSort(arr, 0, arr.length - 1, maxbits(arr));
 	}
 
+	/**
+	 * 统计最长的数字有多少位
+	 * @param arr
+	 * @return
+	 */
 	public static int maxbits(int[] arr) {
 		int max = Integer.MIN_VALUE;
 		for (int i = 0; i < arr.length; i++) {
@@ -25,12 +30,20 @@ public class Code04_RadixSort {
 		return res;
 	}
 
+	/**
+	 * 这个实际上有点像基于词频排序,每个位上搞一次
+	 * @param arr
+	 * @param L
+	 * @param R
+	 * @param digit
+	 */
 	// arr[L..R]排序  ,  最大值的十进制位数digit
 	public static void radixSort(int[] arr, int L, int R, int digit) {
 		final int radix = 10;
 		int i = 0, j = 0;
 		// 有多少个数准备多少个辅助空间
 		int[] help = new int[R - L + 1];
+		//有多少位就搞多少轮
 		for (int d = 1; d <= digit; d++) { // 有多少位就进出几次
 			// 10个空间
 		    // count[0] 当前位(d位)是0的数字有多少个
@@ -42,16 +55,20 @@ public class Code04_RadixSort {
 				// 103  1   3
 				// 209  1   9
 				j = getDigit(arr[i], d);
+				//统计词频
 				count[j]++;
 			}
+			//处理成前缀和
 			for (i = 1; i < radix; i++) {
 				count[i] = count[i] + count[i - 1];
 			}
+			//数组从右往左开始倒出来
 			for (i = R; i >= L; i--) {
 				j = getDigit(arr[i], d);
 				help[count[j] - 1] = arr[i];
 				count[j]--;
 			}
+			//拷贝到原有数组
 			for (i = L, j = 0; i <= R; i++, j++) {
 				arr[i] = help[j];
 			}

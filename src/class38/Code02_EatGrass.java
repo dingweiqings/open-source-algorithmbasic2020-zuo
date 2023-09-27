@@ -32,7 +32,7 @@ public class Code02_EatGrass {
 			if (winner1(n - base).equals("后手")) {
 				return "先手";
 			}
-			if (base > n / 4) { // 防止base*4之后溢出
+			if (base > n / 4) { // 防止base*4之后溢出,也可以再base>0 时循环
 				break;
 			}
 			base *= 4;

@@ -14,6 +14,13 @@ public class Code01_IsCBT {
 		}
 	}
 
+	/**
+	 * 完全二叉树满足条件: 层次遍历情况下
+	 * 1. 如果有右子树却无左子树
+	 * 2. 在1的前提下，如果碰到了叶节点（包括真的叶节点或者只有左孩子的节点)，则后续必须是叶子节点
+	 * @param head
+	 * @return
+	 */
 	public static boolean isCBT1(Node head) {
 		if (head == null) {
 			return true;
@@ -43,6 +50,8 @@ public class Code01_IsCBT {
 			if (r != null) {
 				queue.add(r);
 			}
+			//l==null 一定可以推出r==null
+			//这种实际上有4种情况,但有种情况不会出现,剩余3种情况都要表示遇到了"叶子节点"
 			if (l == null || r == null) {
 				leaf = true;
 			}

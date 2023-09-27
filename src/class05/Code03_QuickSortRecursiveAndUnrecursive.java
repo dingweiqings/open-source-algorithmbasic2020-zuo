@@ -26,6 +26,7 @@ public class Code03_QuickSortRecursiveAndUnrecursive {
 				swap(arr, index, --more);
 			}
 		}
+		//做交换
 		swap(arr, more, R);
 		return new int[] { less + 1, more };
 	}
@@ -44,12 +45,16 @@ public class Code03_QuickSortRecursiveAndUnrecursive {
 		process(arr, 0, arr.length - 1);
 	}
 
+	// 快排3.0
 	public static void process(int[] arr, int L, int R) {
 		if (L >= R) {
 			return;
 		}
+		//随机选择一个数
 		swap(arr, L + (int) (Math.random() * (R - L + 1)), R);
+		//搞定一批数
 		int[] equalArea = netherlandsFlag(arr, L, R);
+		//继续玩分区
 		process(arr, L, equalArea[0] - 1);
 		process(arr, equalArea[1] + 1, R);
 	}

@@ -28,7 +28,13 @@ public class Code03_KM {
 	}
 
 	public static HashMap<Integer, Integer> map = new HashMap<>();
-
+	/**
+	 * 在1-32位上，哪些位上有1，并且记录下来，因为m个数相同，所以有m个1的是出现k次为0的位置.超过m个1是出现k次为1的数
+	 * @param arr
+	 * @param k
+	 * @param m
+	 * @return
+	 */
 	// 请保证arr中，只有一种数出现了K次，其他数都出现了M次
 	public static int onlyKTimes(int[] arr, int k, int m) {
 		if (map.size() == 0) {
@@ -39,7 +45,9 @@ public class Code03_KM {
 		// t[i] i位置的1出现了几个
 		for (int num : arr) {
 			while (num != 0) {
+				//-num 也是取反+1,取出最右边的1
 				int rightOne = num & (-num);
+				//这里实际上是有了map的key, rightOne 对应的int值
 				t[map.get(rightOne)]++;
 				num ^= rightOne;
 			}
@@ -61,14 +69,24 @@ public class Code03_KM {
 		int value = 1;
 		for (int i = 0; i < 32; i++) {
 			map.put(value, i);
+			//key: 1 2 4 8 ..
+			//value: 0 1 2 3
 			value <<= 1;
 		}
 	}
 
+	/**
+	 * 在1-32位上，哪些位上有1，并且记录下来，因为m个数相同，所以有m个1的是出现k次为0的位置.超过m个1是出现k次为1的数
+	 * @param arr
+	 * @param k
+	 * @param m
+	 * @return
+	 */
 	// 更简洁的写法
 	public static int km(int[] arr, int k, int m) {
 		int[] help = new int[32];
 		for (int num : arr) {
+			//统计出1-32位上,所有数字1的个数
 			for (int i = 0; i < 32; i++) {
 				help[i] += (num >> i) & 1;
 			}

@@ -47,15 +47,19 @@ public class Code01_AVLTreeMap {
 			if (cur == null) {
 				return null;
 			}
+			//判断高度
 			int leftHeight = cur.l != null ? cur.l.h : 0;
 			int rightHeight = cur.r != null ? cur.r.h : 0;
+			//不平衡
 			if (Math.abs(leftHeight - rightHeight) > 1) {
 				if (leftHeight > rightHeight) {
 					int leftLeftHeight = cur.l != null && cur.l.l != null ? cur.l.l.h : 0;
 					int leftRightHeight = cur.l != null && cur.l.r != null ? cur.l.r.h : 0;
+					//LL型,则要右旋,增加右树高度
 					if (leftLeftHeight >= leftRightHeight) {
 						cur = rightRotate(cur);
 					} else {
+						//LR型, 左节点先左旋，增加左树高度，当前树再右旋，增加当前树右子树高度
 						cur.l = leftRotate(cur.l);
 						cur = rightRotate(cur);
 					}

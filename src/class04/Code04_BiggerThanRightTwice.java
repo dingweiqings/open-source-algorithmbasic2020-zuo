@@ -22,18 +22,23 @@ public class Code04_BiggerThanRightTwice {
 	public static int merge(int[] arr, int L, int m, int r) {
 		// [L....M] [M+1....R]
 		int ans = 0;
-		// 目前囊括进来的数，是从[M+1, windowR)
+		// 目前囊括进来的数，是从[M+1, windowR]
 		int windowR = m + 1;
+		//在左侧找
 		for (int i = L; i <= m; i++) {
+			//看这个窗口最大可以扩到哪个位置
 			while (windowR <= r && (long) arr[i] > (long) arr[windowR] * 2) {
 				windowR++;
 			}
+			//从m+1开始
 			ans += windowR - m - 1;
 		}
+
 		int[] help = new int[r - L + 1];
 		int i = 0;
 		int p1 = L;
 		int p2 = m + 1;
+		//排序的架子
 		while (p1 <= m && p2 <= r) {
 			help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
 		}

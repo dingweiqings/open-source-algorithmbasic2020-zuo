@@ -1,23 +1,36 @@
 package class01;
 
+/**
+ * 只要可以丢掉一部分，就可以用二分
+ */
 public class Code06_BSAwesome {
-
-	// 课上的代码
+	/**
+	 * 问题:求一个局部最小的数，如果这个数比左边小，同时比右边小.第一个数和最后一个数只需要满足一个条件就可以。
+	 * 输入：这个数组是无序的，任意2个数不相等
+	 * @param arr
+	 * @return
+	 */
+	// 课上的代码,
 	public static int getLessIndex(int[] arr) {
 		if (arr == null || arr.length == 0) {
 			return -1;
 		}
+		//先单独检查第一个数和最后一个数,这个或包含了长度为2的情况
 		if (arr.length == 1 || arr[0] < arr[1]) {
 			return 0;
 		}
 		if (arr[arr.length - 1] < arr[arr.length - 2]) {
 			return arr.length - 1;
 		}
+		//在上面2个都没有满足，则表示数组是先减 ...  增.在中间范围内一定有局部最小，所以直接取中点位置，然后将这个递增递减关系继续下。画个图示就好理解了
+		//就是取中点，然后流程可以证明是对的
 		int left = 1;
 		int right = arr.length - 2;
 		int mid = 0;
 		while (left < right) {
 			mid = (left + right) / 2;
+			//画图就很好理解
+			//如果中间的比左边大，则取左边
 			if (arr[mid] > arr[mid - 1]) {
 				right = mid - 1;
 			} else if (arr[mid] > arr[mid + 1]) {
@@ -71,6 +84,7 @@ public class Code06_BSAwesome {
 			}
 		}
 		System.out.println("测试结束");
+		System.out.println(getLessIndex(new int[]{1,2}));
 	}
 
 }

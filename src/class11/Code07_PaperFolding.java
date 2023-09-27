@@ -1,5 +1,8 @@
 package class11;
 
+/**
+ * 折叠纸，看 "凹 " : "凸 "
+ */
 public class Code07_PaperFolding {
 
 	public static void printAllFolds(int N) {
