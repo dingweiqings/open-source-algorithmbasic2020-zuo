@@ -3,6 +3,9 @@ package class06;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+/**
+ * 维护一个黑盒,不断向黑盒里面添加，返回最大值，要求是O(log n).实际上就是优先级队列
+ */
 public class Code02_Heap {
 
 	public static class MyMaxHeap {
@@ -79,6 +82,9 @@ public class Code02_Heap {
 
 	}
 
+	/**
+	 * 对数器,暴力的查询，每次取最大值是O(n)
+	 */
 	public static class RightMaxHeap {
 		private int[] arr;
 		private final int limit;

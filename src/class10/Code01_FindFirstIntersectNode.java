@@ -1,5 +1,8 @@
 package class10;
 
+/**
+ * 找到第一个入环的节点
+ */
 public class Code01_FindFirstIntersectNode {
 
 	public static class Node {

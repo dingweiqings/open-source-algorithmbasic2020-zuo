@@ -1,14 +1,16 @@
 package class07;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
+/**
+ * 这个堆实现的实际上是你可以改堆中元素的值，但是改完之后，还要保持push还需要保持 O(log n)
+ * PriorityQueue
+ * @param <T>
+ */
 public class HeapGreater<T> {
 
 	private ArrayList<T> heap;
-	private HashMap<T, Integer> indexMap;
+	private HashMap<T, Integer> indexMap;  //记录在堆中的下标位置
 	private int heapSize;
 	private Comparator<? super T> comp;
 
@@ -63,6 +65,7 @@ public class HeapGreater<T> {
 	}
 
 	public void resign(T obj) {
+		//修改了元素的值,则看能不能向上调整,能不能向下调整
 		heapInsert(indexMap.get(obj));
 		heapify(indexMap.get(obj));
 	}
@@ -100,6 +103,7 @@ public class HeapGreater<T> {
 	private void swap(int i, int j) {
 		T o1 = heap.get(i);
 		T o2 = heap.get(j);
+		//同时交换 下标和堆中的位置
 		heap.set(i, o2);
 		heap.set(j, o1);
 		indexMap.put(o2, i);

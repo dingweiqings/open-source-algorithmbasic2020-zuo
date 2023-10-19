@@ -18,6 +18,7 @@ public class Code02_PartitionAndQuickSort {
 		if (L == R) {
 			return L;
 		}
+		//左边界
 		int lessEqual = L - 1;
 		int index = L;
 		while (index < R) {
@@ -92,7 +93,7 @@ public class Code02_PartitionAndQuickSort {
 		if (L >= R) {
 			return;
 		}
-		// [ equalArea[0]  ,  equalArea[0]]
+		// [ equalArea[0]  ,  equalArea[1]]
 		int[] equalArea = netherlandsFlag(arr, L, R);
 		process2(arr, L, equalArea[0] - 1);
 		process2(arr, equalArea[1] + 1, R);

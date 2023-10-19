@@ -2,6 +2,9 @@ package class09;
 
 import java.util.HashMap;
 
+/**
+ * 拷贝链表带随机指针
+ */
 // 测试链接 : https://leetcode.com/problems/copy-list-with-random-pointer/
 public class Code04_CopyListWithRandom {
 
@@ -17,6 +20,11 @@ public class Code04_CopyListWithRandom {
 		}
 	}
 
+	/**
+	 * 搞个哈希表,把节点全部放进去
+	 * @param head
+	 * @return
+	 */
 	public static Node copyRandomList1(Node head) {
 		// key 老节点
 		// value 新节点

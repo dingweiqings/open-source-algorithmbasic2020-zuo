@@ -2,6 +2,9 @@ package class09;
 
 import java.util.Stack;
 
+/**
+ * 是否是回文链表
+ */
 public class Code02_IsPalindromeList {
 
 	public static class Node {
@@ -67,7 +70,7 @@ public class Code02_IsPalindromeList {
 			n2 = n2.next.next; // n2 -> end
 		}
 		// n1 中点
-		
+		//保留n1不动
 		
 		n2 = n1.next; // n2 -> right part first node
 		n1.next = null; // mid.next -> null
@@ -80,6 +83,7 @@ public class Code02_IsPalindromeList {
 		}
 		n3 = n1; // n3 -> save last node
 		n2 = head;// n2 -> left first node
+		//比对
 		boolean res = true;
 		while (n1 != null && n2 != null) { // check palindrome
 			if (n1.value != n2.value) {
@@ -89,6 +93,7 @@ public class Code02_IsPalindromeList {
 			n1 = n1.next; // left to mid
 			n2 = n2.next; // right to mid
 		}
+		//再把右半边还原
 		n1 = n3.next;
 		n3.next = null;
 		while (n1 != null) { // recover list

@@ -1,5 +1,8 @@
 package class09;
 
+/**
+ * 链表玩partition
+ */
 public class Code03_SmallerEqualBigger {
 
 	public static class Node {
@@ -11,6 +14,12 @@ public class Code03_SmallerEqualBigger {
 		}
 	}
 
+	/**
+	 * 转成数组玩partition
+	 * @param head
+	 * @param pivot
+	 * @return
+	 */
 	public static Node listPartition1(Node head, int pivot) {
 		if (head == null) {
 			return head;

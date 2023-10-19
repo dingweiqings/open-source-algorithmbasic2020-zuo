@@ -2,6 +2,9 @@ package class08;
 
 import java.util.Arrays;
 
+/**
+ * 进制排序
+ */
 public class Code04_RadixSort {
 
 	// only for no-negative value

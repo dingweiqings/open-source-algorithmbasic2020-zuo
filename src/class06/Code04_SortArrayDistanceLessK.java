@@ -5,6 +5,11 @@ import java.util.PriorityQueue;
 
 public class Code04_SortArrayDistanceLessK {
 
+	/**
+	 * 基本有序的数组，需要移动距离不超过K
+	 * @param arr
+	 * @param k
+	 */
 	public static void sortedArrDistanceLessK(int[] arr, int k) {
 		if (k == 0) {
 			return;
@@ -13,14 +18,17 @@ public class Code04_SortArrayDistanceLessK {
 		PriorityQueue<Integer> heap = new PriorityQueue<>();
 		int index = 0;
 		// 0...K-1
+		//用一个堆,先把数前k个数装到堆里去
 		for (; index <= Math.min(arr.length - 1, k - 1); index++) {
 			heap.add(arr[index]);
 		}
 		int i = 0;
+		//然后不断把数加到堆里，并吐出来，放到数组前面的位置
 		for (; index < arr.length; i++, index++) {
 			heap.add(arr[index]);
 			arr[i] = heap.poll();
 		}
+		//最后再把堆中数据全部吐出来
 		while (!heap.isEmpty()) {
 			arr[i++] = heap.poll();
 		}
